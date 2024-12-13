@@ -94,7 +94,7 @@ export default function CreateRecipe() {
               onChange={(e) => {
                 const newSteps = [...steps];
                 newSteps[index] = e.currentTarget.value;
-                setIngredients(newSteps);
+                setSteps(newSteps);
               }}
             />
           );
