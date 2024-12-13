@@ -1,18 +1,24 @@
 import { Recipe } from "./Recipes.types";
+
+export enum Day {
+  Monday = "Monday",
+  Tuesday = "Tuesday",
+  Wednesday = "Wednesday",
+  Thursday = "Thursday",
+  Friday = "Friday",
+  Saturday = "Saturday",
+  Sunday = "Sunday",
+}
+export enum Time {
+  Breakfast = "Breakfast",
+  Lunch = "Lunch",
+  Dinner = "Dinner",
+}
 export type Meal = {
   id: string;
   name: string;
-  day: [
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-    "Sunday"
-  ];
-  time: ["Breakfast", "Lunch", "Dinner"];
-  createdAt: Date;
-  updatedAt: Date;
-  recipe_id: Recipe;
+  day: Day;
+  time: Time;
+  recipe: Recipe;
+  recipe_id: string;
 };
