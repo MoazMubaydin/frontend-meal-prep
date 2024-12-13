@@ -1,15 +1,22 @@
-import { Card, Image, Text, Button, Group, Loader } from "@mantine/core";
+import { Card, Image, Text, Button, Group, Loader, Modal } from "@mantine/core";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Recipe } from "../types/Recipes.types";
 import "./recipeCard.css";
+import { Link } from "react-router-dom";
+import { BiEdit } from "react-icons/bi";
+import EditRecipe from "../Components/EditRecipe";
 const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
 export default function RecipeCard() {
   const [recipes, setRecipes] = useState<Recipe[]>();
+  const [recipeToEdit, setRecipeToEdit] = useState<Recipe | null>(null);
+  const [isRecipeModalOpen, setRecipeModalOpen] = useState(false);
+
   useEffect(() => {
     getRecipes();
   }, []);
+
   const getRecipes = async () => {
     try {
       const response = await axios.get(`${apiUrl}/api/recipes`);
@@ -18,6 +25,7 @@ export default function RecipeCard() {
       console.log(error);
     }
   };
+
   const deleteRecipe = async (recipeId: string) => {
     try {
       const response = await axios.delete(`${apiUrl}/api/recipes/${recipeId}`);
@@ -27,6 +35,7 @@ export default function RecipeCard() {
       console.log(error);
     }
   };
+
   if (!recipes) {
     return <Loader color="blue" />;
   }
@@ -51,6 +60,14 @@ export default function RecipeCard() {
                 height={160}
                 alt={element.name}
               />
+              <BiEdit
+                width={60}
+                color="orange"
+                onClick={() => {
+                  setRecipeToEdit(element);
+                  setRecipeModalOpen(true);
+                }}
+              />
             </Card.Section>
 
             <Text fw={500} mt="md" mb="xs">
@@ -64,9 +81,11 @@ export default function RecipeCard() {
               {element.steps}
             </Text>
             <Group justify="space-evenly">
-              <Button color="blue" mt="md" radius="lg">
-                More Details
-              </Button>
+              <Link to={`/recipes/${element.id}`}>
+                <Button color="blue" mt="md" radius="lg">
+                  More Details
+                </Button>
+              </Link>
               <Button
                 color="red"
                 mt="md"
@@ -78,6 +97,18 @@ export default function RecipeCard() {
             </Group>
           </Card>
         ))}
+        <Modal
+          opened={isRecipeModalOpen}
+          onClose={() => setRecipeModalOpen(false)}
+          title="Create a Recipe"
+        >
+          {recipeToEdit && (
+            <EditRecipe
+              recipe={recipeToEdit}
+              setRecipeModalOpen={setRecipeModalOpen}
+            />
+          )}
+        </Modal>
       </div>
     )
   );
