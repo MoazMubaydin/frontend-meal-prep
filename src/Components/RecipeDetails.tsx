@@ -31,8 +31,9 @@ export default function RecipeDetails() {
       <Image
         src="https://images.themodernproper.com/billowy-turkey/production/posts/VegetableStirFry_9.jpg?w=1200&h=1200&q=60&fm=jpg&fit=crop&dm=1703377301&s=3484d660c4b404c6d23b0c3ec7ac66eb"
         w={400}
+        className="recipeDetails"
         radius={"lg"}
-        mb={20}
+        mb={40}
       />
       <Text fw={700} size="lg">
         {recipe.name}
