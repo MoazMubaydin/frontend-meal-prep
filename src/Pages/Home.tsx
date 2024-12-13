@@ -30,9 +30,6 @@ export default function Home() {
     }
   };
 
- 
-
- 
   if (meals === undefined) {
     return <Loader color="blue" />;
   } else if (meals.length === 0) {
@@ -46,11 +43,7 @@ export default function Home() {
       <Table.Td>{element.recipe.name}</Table.Td>
       <Table.Td>
         <RiDeleteBin6Line color="red" onClick={() => deleteMeal(element.id)} />
-        <Button
-          variant="transparent"
-          color="yellow"
-          pb={6}
-          >
+        <Button variant="transparent" color="yellow" pb={6}>
           Edit
         </Button>
       </Table.Td>
@@ -60,7 +53,6 @@ export default function Home() {
   return (
     meals && (
       <Table>
-        
         <Table.Thead>
           <Table.Tr>
             <Table.Th>Day</Table.Th>
