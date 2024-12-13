@@ -68,10 +68,12 @@ export default function EditRecipe({
       <TextInput
         label="Name"
         placeholder="Lasagna"
+        value={name}
         onChange={(e) => setName(e.currentTarget.value)}
       />
       <TextInput
-        label="Name"
+        label="Description"
+        value={description}
         placeholder="description"
         onChange={(e) => setDescription(e.currentTarget.value)}
       />
@@ -83,6 +85,7 @@ export default function EditRecipe({
               key={ingredient}
               label={`Ingredient ${index + 1}`}
               placeholder={`ingredient ${index + 1}`}
+              value={ingredients[index]}
               onChange={(e) => {
                 const newIngredients = [...ingredients];
                 newIngredients[index] = e.currentTarget.value;
@@ -102,6 +105,7 @@ export default function EditRecipe({
               key={step}
               label={`Step ${index + 1}`}
               placeholder={`step ${index + 1}`}
+              value={steps[index]}
               onChange={(e) => {
                 const newSteps = [...steps];
                 newSteps[index] = e.currentTarget.value;
