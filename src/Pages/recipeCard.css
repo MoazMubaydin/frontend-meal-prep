@@ -1,0 +1,14 @@
+.Recipes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px; 
+    justify-content: center; 
+    padding: 16px; 
+  }
+  
+  .Recipes .Recipe {
+    flex: 1 1 calc(33.33% - 32px); 
+    max-width: 400px; 
+    box-sizing: border-box; 
+  }
+  
