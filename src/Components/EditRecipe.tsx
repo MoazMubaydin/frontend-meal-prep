@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Recipe } from "../types/Recipes.types";
 import { Button, Group, NumberInput, TextInput } from "@mantine/core";
 import axios from "axios";
+import { BiTrash } from "react-icons/bi";
 
 const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5005";
 
@@ -81,17 +82,26 @@ export default function EditRecipe({
       <Group>
         {ingredients.map((ingredient, index) => {
           return (
-            <TextInput
-              key={ingredient}
-              label={`Ingredient ${index + 1}`}
-              placeholder={`ingredient ${index + 1}`}
-              value={ingredients[index]}
-              onChange={(e) => {
-                const newIngredients = [...ingredients];
-                newIngredients[index] = e.currentTarget.value;
-                setIngredients(newIngredients);
-              }}
-            />
+            <Group key={ingredient}>
+              <TextInput
+                label={`Ingredient ${index + 1}`}
+                placeholder={`ingredient ${index + 1}`}
+                value={ingredients[index]}
+                onChange={(e) => {
+                  const newIngredients = [...ingredients];
+                  newIngredients[index] = e.currentTarget.value;
+                  setIngredients(newIngredients);
+                }}
+              />
+              <BiTrash
+                color={"red"}
+                onClick={() => {
+                  const newIngredients = [...ingredients];
+                  newIngredients.splice(index, 1);
+                  setIngredients(newIngredients);
+                }}
+              />
+            </Group>
           );
         })}
         <Button onClick={handleAddIngredients} mt={25}>
@@ -101,17 +111,27 @@ export default function EditRecipe({
       <Group>
         {steps.map((step, index) => {
           return (
-            <TextInput
-              key={step}
-              label={`Step ${index + 1}`}
-              placeholder={`step ${index + 1}`}
-              value={steps[index]}
-              onChange={(e) => {
-                const newSteps = [...steps];
-                newSteps[index] = e.currentTarget.value;
-                setSteps(newSteps);
-              }}
-            />
+            <Group>
+              <TextInput
+                key={step}
+                label={`Step ${index + 1}`}
+                placeholder={`step ${index + 1}`}
+                value={steps[index]}
+                onChange={(e) => {
+                  const newSteps = [...steps];
+                  newSteps[index] = e.currentTarget.value;
+                  setSteps(newSteps);
+                }}
+              />
+              <BiTrash
+                color={"red"}
+                onClick={() => {
+                  const newSteps = [...steps];
+                  newSteps.splice(index, 1);
+                  setSteps(newSteps);
+                }}
+              />
+            </Group>
           );
         })}
         <Button onClick={handleAddSteps} mt={25}>
