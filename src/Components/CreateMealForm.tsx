@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {  Day, Time } from "../types/Meals.types";
+import { Day, Time } from "../types/Meals.types";
 import { Button, NativeSelect, TextInput } from "@mantine/core";
 import axios from "axios";
+
 const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5005";
 export default function MealForm() {
   const [name, setName] = useState<string>();
@@ -32,13 +33,12 @@ export default function MealForm() {
       if (element.name === recipe) {
         recipe_id = element.id;
       }
-      
     });
     const newMeal = { name, day, time, recipe_id };
 
     try {
-      const response = await axios.post(`${apiUrl}/api/meals`,newMeal);
-      console.log(response)
+      const response = await axios.post(`${apiUrl}/api/meals`, newMeal);
+      console.log(response);
     } catch (error) {
       console.log(error);
     }
