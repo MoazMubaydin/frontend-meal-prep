@@ -24,6 +24,7 @@ export default function Home() {
     try {
       const response = await axios.delete(`${apiUrl}/api/meals/${MealId}`);
       console.log(response);
+      getMeals();
     } catch (error) {
       console.log(error);
     }
