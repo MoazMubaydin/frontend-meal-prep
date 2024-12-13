@@ -100,12 +100,12 @@ export default function EditRecipe({
           return (
             <TextInput
               key={step}
-              label={`Ingredient ${index + 1}`}
-              placeholder={`ingredient ${index + 1}`}
+              label={`Step ${index + 1}`}
+              placeholder={`step ${index + 1}`}
               onChange={(e) => {
                 const newSteps = [...steps];
                 newSteps[index] = e.currentTarget.value;
-                setIngredients(newSteps);
+                setSteps(newSteps);
               }}
             />
           );
