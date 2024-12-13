@@ -80,7 +80,7 @@ export default function EditRecipe({
         {ingredients.map((ingredient, index) => {
           return (
             <TextInput
-              key={index}
+              key={ingredient}
               label={`Ingredient ${index + 1}`}
               placeholder={`ingredient ${index + 1}`}
               onChange={(e) => {
@@ -99,7 +99,7 @@ export default function EditRecipe({
         {steps.map((step, index) => {
           return (
             <TextInput
-              key={index}
+              key={step}
               label={`Ingredient ${index + 1}`}
               placeholder={`ingredient ${index + 1}`}
               onChange={(e) => {

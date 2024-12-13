@@ -69,7 +69,7 @@ export default function CreateRecipe() {
         {ingredients.map((ingredient, index) => {
           return (
             <TextInput
-              key={index}
+              key={ingredient}
               label={`Ingredient ${index + 1}`}
               placeholder={`ingredient ${index + 1}`}
               onChange={(e) => {
@@ -88,7 +88,7 @@ export default function CreateRecipe() {
         {steps.map((step, index) => {
           return (
             <TextInput
-              key={index}
+              key={step}
               label={`Ingredient ${index + 1}`}
               placeholder={`ingredient ${index + 1}`}
               onChange={(e) => {
