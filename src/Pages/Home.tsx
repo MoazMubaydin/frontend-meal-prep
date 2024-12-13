@@ -43,9 +43,6 @@ export default function Home() {
       <Table.Td>{element.recipe.name}</Table.Td>
       <Table.Td>
         <RiDeleteBin6Line color="red" onClick={() => deleteMeal(element.id)} />
-        <Button variant="transparent" color="yellow" pb={6}>
-          Edit
-        </Button>
       </Table.Td>
     </Table.Tr>
   ));
